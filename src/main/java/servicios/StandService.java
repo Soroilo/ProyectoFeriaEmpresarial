@@ -19,3 +19,24 @@ public class StandService {
     public void asignarEmpresa(Stand stand, Empresa empresa) {
         stand.setEmpresa(empresa);
     }
+    
+ public List<Stand> listarStandsDisponibles() {
+        List<Stand> disponibles = new ArrayList<>();
+        for (Stand stand : stands) {
+            if (stand.getEmpresa() == null) {
+                disponibles.add(stand);
+            }
+        }
+        return disponibles;
+    }
+
+    public List<Stand> listarStandsOcupados() {
+        List<Stand> ocupados = new ArrayList<>();
+        for (Stand stand : stands) {
+            if (stand.getEmpresa() != null) {
+                ocupados.add(stand);
+            }
+        }
+        return ocupados;
+    }
+}
